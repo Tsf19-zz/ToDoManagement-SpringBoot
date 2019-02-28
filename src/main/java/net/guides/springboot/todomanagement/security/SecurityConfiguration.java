@@ -6,7 +6,19 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-
+/**
+ * This class extends WebSecurityConfigurerAdapter and overrides a couple
+ * of its methods to set some specifics of the web security configuration.
+ *
+ * The configure(HttpSecurity) method defines which URL paths should be secured 
+ * and which should not. Specifically, the "/" and "/login" paths are configured 
+ * to not require any authentication. All other paths must be authenticated.
+ * 
+ * As for the userDetailsService() method, it sets up an in-memory user store 
+ * with a single user. That user is given a username of "admin", a password 
+ * of "admin", and a role of "ADMIN". 
+ *
+ */
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Autowired
